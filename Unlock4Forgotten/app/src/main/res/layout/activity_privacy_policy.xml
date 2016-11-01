@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.alexsandercaproni.unlock4forgotten.PrivacyPolicy">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="217dp">
+
+            <TextView
+                android:layout_width="match_parent"
+
+                android:layout_height="match_parent"
+                android:text="O Unlock4Forgotten necessita de alguns dados do usuário, como IMEI do dispositivo pessoal, para que a segurança possa ser melhorada, bem como nome completo, e-mail e uma senha.
+Além disso o Unlock4Forgotten não se responsabiliza por:
+- Perda/Roubo de seu smartphone;
+- Gasto de dados excessivo de internet;
+- Consumo de bateria;
+- Abertura de portas por terceiros;
+Você aceita os termos propostos ?" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="buttonCancelar"
+                android:background="#2196F3"
+                android:text="Recusar"
+                android:textColor="#FFFFFF"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="buttonAceitar"
+                android:background="#2196F3"
+                android:text="Aceitar"
+                android:layout_marginLeft="5dp"
+                android:textColor="#FFFFFF"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

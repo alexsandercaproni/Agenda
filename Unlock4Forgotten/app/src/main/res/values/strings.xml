@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Unlock4Forgotten</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_empty_name">This name is empty</string>
+    <string name="error_empty_senha">This password is empty</string>
+    <string name="error_empty_email">This email is empty</string>
+    <string name="error_different_passwords">This password is different</string>
+    <string name="error_invalid_password">This password is invalid</string>
+    <string name="help_page_intro">Aqui vai uma breve introdução a respeito do tema</string>
+    <string name="help_title_section1"> Funcionalidades relacionadas à porta.</string>
+    <string name="help_title_section2"> Funcionalidades relaconadas ao sistema.</string>
+    <string name="help_title_section3"> Botão para abrir a porta.</string>
+    <string name="help_title_section4"> Botão para desligar o sistema.</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+</resources>
