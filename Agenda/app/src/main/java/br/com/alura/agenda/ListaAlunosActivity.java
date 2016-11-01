@@ -1,4 +1,4 @@
-package br.inatel.agenda;
+package br.com.alura.agenda;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,13 +10,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import br.inatel.agenda.dao.AlunoDAO;
-import br.inatel.agenda.model.Aluno;
+import br.com.alura.agenda.dao.AlunoDAO;
+import br.com.alura.agenda.modelo.Aluno;
 
 public class ListaAlunosActivity extends AppCompatActivity {
 
@@ -27,31 +25,28 @@ public class ListaAlunosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_alunos);
 
-        Button buttonNew = (Button) findViewById(R.id.buttonNew);
-        buttonNew.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ListaAlunosActivity.this, FormularioActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        listaAlunos = (ListView) findViewById(R.id.listView);
-
+        listaAlunos = (ListView) findViewById(R.id.lista_alunos);
         listaAlunos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> lista, View item, int position, long id) {
                 Aluno aluno = (Aluno) listaAlunos.getItemAtPosition(position);
 
-                Intent intent = new Intent(ListaAlunosActivity.this, FormularioActivity.class);
-                intent.putExtra("aluno", aluno);
-                startActivity(intent);
+                Intent intentVaiPtoFormulario = new Intent(ListaAlunosActivity.this, FormularioActivity.class);
+                intentVaiPtoFormulario.putExtra("aluno", aluno);
+                startActivity(intentVaiPtoFormulario);
+            }
+        });
 
+        Button novoAluno = (Button) findViewById(R.id.novo_aluno);
+        novoAluno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent vaiProFormulario = new Intent(ListaAlunosActivity.this, FormularioActivity.class);
+                startActivity(vaiProFormulario);
             }
         });
 
         registerForContextMenu(listaAlunos);
-
     }
 
     @Override
@@ -62,12 +57,10 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
     private void carregaLista() {
         AlunoDAO dao = new AlunoDAO(this);
-
-        List<Aluno> alunos = dao.busca();
+        List<Aluno> alunos = dao.buscaAlunos();
         dao.close();
 
-        ArrayAdapter<Aluno> adapter = new ArrayAdapter<Aluno>(this, android.R.layout.simple_list_item_1, alunos);
-
+        ArrayAdapter<Aluno> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, alunos);
         listaAlunos.setAdapter(adapter);
     }
 
@@ -85,10 +78,8 @@ public class ListaAlunosActivity extends AppCompatActivity {
                 dao.close();
 
                 carregaLista();
-
                 return false;
             }
         });
-
     }
 }

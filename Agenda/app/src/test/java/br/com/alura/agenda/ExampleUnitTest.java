@@ -1,4 +1,4 @@
-package br.inatel.agenda;
+package br.com.alura.agenda;
 
 import org.junit.Test;
 

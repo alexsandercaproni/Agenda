@@ -1,19 +1,21 @@
-package br.inatel.agenda;
+package br.com.alura.agenda;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
-import br.inatel.agenda.dao.AlunoDAO;
-import br.inatel.agenda.model.Aluno;
+import br.com.alura.agenda.dao.AlunoDAO;
+import br.com.alura.agenda.modelo.Aluno;
 
 public class FormularioActivity extends AppCompatActivity {
 
-    FormularioHelper helper;
+    private FormularioHelper helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +25,8 @@ public class FormularioActivity extends AppCompatActivity {
         helper = new FormularioHelper(this);
 
         Intent intent = getIntent();
-        Aluno aluno = (Aluno)  intent.getSerializableExtra("aluno");
-        if (aluno !=null) {
+        Aluno aluno = (Aluno) intent.getSerializableExtra("aluno");
+        if(aluno != null) {
             helper.preencheFormulario(aluno);
         }
 
@@ -32,7 +34,6 @@ public class FormularioActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //convertendo meu codigo xml em View
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_formulario, menu);
 
@@ -42,20 +43,19 @@ public class FormularioActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.menu_formulario:
-
+            case R.id.menu_formulario_ok:
                 Aluno aluno = helper.pegaAluno();
+
                 AlunoDAO dao = new AlunoDAO(this);
-
-                if(!Long.toString(aluno.getID()).equals(null)){
-                    dao.insere(aluno);
-                    Toast.makeText(FormularioActivity.this, "Aluno " + aluno.getNome() + " cadastrado!", Toast.LENGTH_SHORT).show();
-                }else{
+                if(aluno.getId() != null) {
                     dao.altera(aluno);
-                    Toast.makeText(FormularioActivity.this, "Aluno " + aluno.getNome() + " alterado!", Toast.LENGTH_SHORT).show();
+                } else {
+                    dao.insere(aluno);
                 }
-
                 dao.close();
+
+                Toast.makeText(FormularioActivity.this, "Aluno " + aluno.getNome() + " salvo!",
+                        Toast.LENGTH_SHORT).show();
                 finish();
                 break;
         }
