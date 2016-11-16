@@ -2,6 +2,9 @@ package br.com.alura.agenda.modelo;
 
 import java.io.Serializable;
 
+/**
+ * Created by alura on 12/08/15.
+ */
 public class Aluno implements Serializable {
     private Long id;
     private String nome;
@@ -9,6 +12,7 @@ public class Aluno implements Serializable {
     private String telefone;
     private String site;
     private Double nota;
+    private String caminhoFoto;
 
     public Long getId() {
         return id;
@@ -56,6 +60,14 @@ public class Aluno implements Serializable {
 
     public void setNota(Double nota) {
         this.nota = nota;
+    }
+
+    public String getCaminhoFoto() {
+        return caminhoFoto;
+    }
+
+    public void setCaminhoFoto(String caminhoFoto) {
+        this.caminhoFoto = caminhoFoto;
     }
 
     @Override
